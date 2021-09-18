@@ -1,5 +1,9 @@
 package ru.geekbrains.universe
 
 interface MainView {
-    fun setButtonText(index: Int, text: String)
+
+    fun showCounterOne(counter: String)
+    fun showCounterTwo(counter: String)
+    fun showCounterThree(counter: String)
+
 }

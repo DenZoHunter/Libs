@@ -2,37 +2,37 @@ package ru.geekbrains.universe
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import ru.geekbrains.universe.R.layout.activity_main
 
 class MainActivity : AppCompatActivity(activity_main), MainView {
 
-    val presenter = MainPresenter(this)
+    private val presenter: MainPresenter by lazy {
+        MainPresenter(view = this, model = CountersModel)
+    }
 
-    private val btn_counter1: Button by lazy { findViewById(R.id.btn_counter1) }
-    private val btn_counter2: Button by lazy { findViewById(R.id.btn_counter2) }
-    private val btn_counter3: Button by lazy { findViewById(R.id.btn_counter3) }
+    private val buttonCounter1: Button by lazy { findViewById(R.id.btn_counter1) }
+    private val buttonCounter2: Button by lazy { findViewById(R.id.btn_counter2) }
+    private val buttonCounter3: Button by lazy { findViewById(R.id.btn_counter3) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val listener = View.OnClickListener {
-            presenter.counterClick(it.id)
-        }
-
-        btn_counter1.setOnClickListener(listener)
-        btn_counter2.setOnClickListener(listener)
-        btn_counter3.setOnClickListener(listener)
+        buttonCounter1.setOnClickListener { presenter.countPlus1() }
+        buttonCounter2.setOnClickListener { presenter.countPlus2() }
+        buttonCounter3.setOnClickListener { presenter.countPlus3() }
     }
 
-    //Подсказка к ПЗ: поделить на 3 отдельные функции и избавиться от index
-    override fun setButtonText(index: Int, text: String) {
-        when(index){
-            0 -> btn_counter1.text = text
-            1 -> btn_counter2.text = text
-            2 -> btn_counter3.text = text
-        }
+    override fun showCounterOne(counter: String) {
+        buttonCounter1.text = counter
+    }
+
+    override fun showCounterTwo(counter: String) {
+        buttonCounter2.text = counter
+    }
+
+    override fun showCounterThree(counter: String) {
+        buttonCounter3.text = counter
     }
 
 }
