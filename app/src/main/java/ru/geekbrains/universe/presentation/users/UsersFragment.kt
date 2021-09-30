@@ -9,27 +9,26 @@ import moxy.ktx.moxyPresenter
 import ru.geekbrains.universe.App.Navigator.router
 import ru.geekbrains.universe.R
 import ru.geekbrains.universe.data.GitHubUser
-import ru.geekbrains.universe.data.GitHubUserRepository
+import ru.geekbrains.universe.data.GitHubUserRepositoryFactory
 import ru.geekbrains.universe.presentation.users.adapter.UsersAdapter
 
 class UsersFragment : MvpAppCompatFragment(R.layout.fragment_users), UsersView,
     UsersAdapter.UserClickListener {
-    private lateinit var userList: RecyclerView
-    private lateinit var userAdapter: UsersAdapter
+    private var userList: RecyclerView? = null
+    private val userAdapter: UsersAdapter = UsersAdapter(this)
 
     private val presenter: UsersPresenter by moxyPresenter {
         UsersPresenter(
-            userRepository = GitHubUserRepository(),
+            userRepository = GitHubUserRepositoryFactory.create(),
             router = router
         )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userAdapter = UsersAdapter(this)
         userList = requireActivity().findViewById(R.id.userList)
-        userList.layoutManager = LinearLayoutManager(context)
-        userList.adapter = userAdapter
+        userList?.layoutManager = LinearLayoutManager(context)
+        userList?.adapter = userAdapter
     }
 
     override fun showUsers(list: List<GitHubUser>) {
