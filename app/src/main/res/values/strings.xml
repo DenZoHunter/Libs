@@ -15,5 +15,6 @@
     <string name="success">Успешно</string>
     <string name="noImageSelected">Не выбрано изображение</string>
     <string name="undefinedLogin">Неизвестный логин</string>
+    <string name="countForks">Count Forks</string>
 
 </resources>

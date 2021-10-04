@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.universe.R
-import ru.geekbrains.universe.data.GitHubUser
 
 
 class UsersAdapter(private val delegate: UserClickListener) :

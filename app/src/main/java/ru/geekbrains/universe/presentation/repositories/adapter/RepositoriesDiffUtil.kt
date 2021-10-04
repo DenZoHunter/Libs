@@ -1,10 +1,11 @@
-package ru.geekbrains.universe.presentation.users.adapter
+package ru.geekbrains.universe.presentation.repositories.adapter
 
 import androidx.recyclerview.widget.DiffUtil
+import ru.geekbrains.universe.data.GitHubRepos
 
-class UsersDiffUtil(
-    private val oldList: List<GitHubUser>,
-    private val newList: List<GitHubUser>
+class RepositoriesDiffUtil(
+    private val oldList: List<GitHubRepos>,
+    private val newList: List<GitHubRepos>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int = oldList.size
@@ -12,7 +13,7 @@ class UsersDiffUtil(
     override fun getNewListSize(): Int = newList.size
 
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].login == newList[newItemPosition].login
+        return oldList[oldItemPosition].name == newList[newItemPosition].name
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

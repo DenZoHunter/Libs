@@ -10,8 +10,8 @@ import moxy.ktx.moxyPresenter
 import ru.geekbrains.universe.App.Navigator.router
 import ru.geekbrains.universe.R
 import ru.geekbrains.universe.data.GitHubUser
-import ru.geekbrains.universe.data.GitHubUserRepository
 import ru.geekbrains.universe.presentation.users.adapter.UsersAdapter
+import ru.geekbrains.universe.repository.user.GitHubUserRepositoryFactory
 
 class UsersFragment : MvpAppCompatFragment(R.layout.fragment_users), UsersView,
     UsersAdapter.UserClickListener {
@@ -20,7 +20,7 @@ class UsersFragment : MvpAppCompatFragment(R.layout.fragment_users), UsersView,
 
     private val presenter: UsersPresenter by moxyPresenter {
         UsersPresenter(
-            userRepository = GitHubUserRepository,
+            userRepository = GitHubUserRepositoryFactory.create(),
             router = router
         )
     }
@@ -41,7 +41,7 @@ class UsersFragment : MvpAppCompatFragment(R.layout.fragment_users), UsersView,
     }
 
     override fun onClickUser(user: GitHubUser) {
-        presenter.displayUser(user = user)
+        presenter.displayRepositories(user = user)
     }
 
 }

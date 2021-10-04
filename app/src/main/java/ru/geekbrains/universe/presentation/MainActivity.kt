@@ -6,7 +6,8 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 import moxy.MvpAppCompatActivity
 import ru.geekbrains.universe.App.Navigator.navigatorHolder
 import ru.geekbrains.universe.App.Navigator.router
-import ru.geekbrains.universe.presentation.converter.ConverterScreen
+import ru.geekbrains.universe.presentation.users.UsersScreen
+
 
 class MainActivity : MvpAppCompatActivity() {
 
@@ -20,7 +21,7 @@ class MainActivity : MvpAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        savedInstanceState ?: router.newRootScreen(ConverterScreen())
+        savedInstanceState ?: router.newRootScreen(UsersScreen())
     }
 
     override fun onPause() {

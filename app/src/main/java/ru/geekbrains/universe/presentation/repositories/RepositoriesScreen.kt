@@ -1,12 +1,13 @@
-package ru.geekbrains.universe.presentation.converter
+package ru.geekbrains.universe.presentation.repositories
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
-class ConverterScreen : FragmentScreen {
+class RepositoriesScreen(private val url: String) :
+    FragmentScreen {
 
     override fun createFragment(factory: FragmentFactory): Fragment =
-        ConverterFragment.newInstance()
+        RepositoriesFragment.newInstance(url)
 
 }

@@ -1,13 +1,13 @@
-package ru.geekbrains.universe.presentation.user
+package ru.geekbrains.universe.presentation.repository
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
-class UserScreen(private val userId: Int) :
+class RepositoryDetailsScreen(private val countForks: Int) :
     FragmentScreen {
 
     override fun createFragment(factory: FragmentFactory): Fragment =
-        UserFragment.newInstance(userId)
+        RepositoryDetailsFragment.newInstance(countForks)
 
 }

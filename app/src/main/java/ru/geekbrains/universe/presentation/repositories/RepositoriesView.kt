@@ -1,13 +1,14 @@
-package ru.geekbrains.universe.presentation.users
+package ru.geekbrains.universe.presentation.repositories
 
+import ru.geekbrains.universe.data.GitHubRepos
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-interface UsersView : MvpView {
+interface RepositoriesView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun showUsers(list: List<GitHubUser>)
+    fun showRepositories(list: List<GitHubRepos>)
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showError(throwable: Throwable)
