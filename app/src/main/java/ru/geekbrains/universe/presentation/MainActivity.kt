@@ -6,11 +6,11 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 import moxy.MvpAppCompatActivity
 import ru.geekbrains.universe.App.Navigator.navigatorHolder
 import ru.geekbrains.universe.App.Navigator.router
-import ru.geekbrains.universe.presentation.users.UsersScreen
+import ru.geekbrains.universe.presentation.converter.ConverterScreen
 
 class MainActivity : MvpAppCompatActivity() {
 
-    private val navigator = AppNavigator(this, R.id.content)
+    private val navigator = AppNavigator(this, android.R.id.content)
 
     override fun onResumeFragments() {
         super.onResumeFragments()
@@ -20,11 +20,12 @@ class MainActivity : MvpAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        savedInstanceState ?: router.newRootScreen(UsersScreen())
+        savedInstanceState ?: router.newRootScreen(ConverterScreen())
     }
 
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
     }
+
 }

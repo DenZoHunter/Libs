@@ -1,20 +1,21 @@
-package ru.geekbrains.universe.presentation.user
+package ru.geekbrains.universe.presentation.converter
 
 import moxy.MvpView
 import moxy.viewstate.strategy.SingleStateStrategy
 import moxy.viewstate.strategy.StateStrategyType
-import ru.geekbrains.universe.data.GitHubUser
 
-interface UserView : MvpView {
-
+interface ConverterView : MvpView {
 
     @StateStrategyType(SingleStateStrategy::class)
-    fun showLogin(user: GitHubUser)
+    fun showSuccess(path: String)
+
+    @StateStrategyType(SingleStateStrategy::class)
+    fun showEmpty()
+
+    @StateStrategyType(SingleStateStrategy::class)
+    fun pickImage()
 
     @StateStrategyType(SingleStateStrategy::class)
     fun showError(throwable: Throwable)
-
-    @StateStrategyType(SingleStateStrategy::class)
-    fun undefinedLogin()
 
 }

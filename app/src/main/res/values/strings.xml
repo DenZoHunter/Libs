@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Popular Libraries</string>
     <string name="counter_one">Счетчик 1</string>
     <string name="counter_two">Счетчик 2</string>
@@ -10,4 +11,9 @@
     <string name="user_id_title">Идентификатор</string>
     <string name="user_name_title">Имя</string>
     <string name="error">Ошибка</string>
+    <string name="convert">Конвертировать</string>
+    <string name="success">Успешно</string>
+    <string name="noImageSelected">Не выбрано изображение</string>
+    <string name="undefinedLogin">Неизвестный логин</string>
+
 </resources>
