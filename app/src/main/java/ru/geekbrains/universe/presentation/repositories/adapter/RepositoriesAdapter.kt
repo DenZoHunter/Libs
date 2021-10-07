@@ -6,17 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.geekbrains.universe.R
-import ru.geekbrains.universe.data.GitHubRepos
+import ru.geekbrains.universe.data.database.RoomDataBase
 
 class RepositoriesAdapter(private val delegate: RepoClickListener) :
     RecyclerView.Adapter<RepositoriesViewHolder>() {
-    private val list: MutableList<GitHubRepos> = mutableListOf()
+    private val list: MutableList<RoomDataBase> = mutableListOf()
 
     interface RepoClickListener {
-        fun onClickRepo(repo: GitHubRepos)
+        fun onClickRepo(repo: RoomDataBase)
     }
 
-    fun submitList(users: List<GitHubRepos>) {
+    fun submitList(users: List<RoomDataBase>) {
         val callback =
             RepositoriesDiffUtil(
                 list,
@@ -35,7 +35,7 @@ class RepositoriesAdapter(private val delegate: RepoClickListener) :
             false
         )
         rootView.setOnClickListener {
-            delegate.onClickRepo(it.tag as GitHubRepos)
+            delegate.onClickRepo(it.tag as RoomDataBase)
         }
         return RepositoriesViewHolder(rootView)
     }

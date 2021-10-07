@@ -1,11 +1,25 @@
 package ru.geekbrains.universe.repository.repos
 
-import ru.geekbrains.universe.data.datasourse.repo.GitHubReposDataSourceFactory
+import android.content.Context
+import ru.geekbrains.universe.data.datasourse.repos.GitHubReposDataSourceFactory
+import ru.geekbrains.universe.data.datasourse.repos.RoomGithubRepositoriesCacheFactory
 
 object GitHubReposRepositoryFactory {
 
-    fun create(): GitHubReposRepository = GitHubReposRepositoryImpl(
-        gitHubReposDataSource = GitHubReposDataSourceFactory.create(),
-    )
+    private var repository: GitHubReposRepository? = null
+
+    private fun getInstance(context: Context, url: String, userLogin: String): GitHubReposRepository {
+        println("repository == null")
+        println(repository == null)
+        if (repository == null) {
+            repository = GitHubReposRepositoryImpl(
+                gitHubReposDataSource = GitHubReposDataSourceFactory.create(url = url),
+                roomGithubRepositoriesCache = RoomGithubRepositoriesCacheFactory.create(context, userLogin = userLogin)
+            )
+        }
+        return repository!!
+    }
+
+    fun create(context: Context, url: String, userLogin: String): GitHubReposRepository = getInstance(context = context, url = url, userLogin = userLogin)
 
 }

@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import moxy.MvpPresenter
 import ru.geekbrains.universe.data.GitHubUser
-import ru.geekbrains.universe.presentation.repositories.RepositoriesScreen
+import ru.geekbrains.universe.presentation.user.UserScreen
 import ru.geekbrains.universe.repository.user.GitHubUserRepository
 
 
@@ -32,7 +32,7 @@ class UsersPresenter(
 
     }
 
-    fun displayRepositories(user: GitHubUser) = router.navigateTo(RepositoriesScreen(user.repos_url))
+    fun displayUser(user: GitHubUser) = router.navigateTo(UserScreen(user.login))
 
     override fun onDestroy() {
         disposable.dispose()

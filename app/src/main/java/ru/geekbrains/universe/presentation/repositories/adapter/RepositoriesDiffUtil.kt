@@ -1,11 +1,11 @@
 package ru.geekbrains.universe.presentation.repositories.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import ru.geekbrains.universe.data.GitHubRepos
+import ru.geekbrains.universe.data.database.RoomDataBase
 
 class RepositoriesDiffUtil(
-    private val oldList: List<GitHubRepos>,
-    private val newList: List<GitHubRepos>
+    private val oldList: List<RoomDataBase>,
+    private val newList: List<RoomDataBase>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize(): Int = oldList.size
