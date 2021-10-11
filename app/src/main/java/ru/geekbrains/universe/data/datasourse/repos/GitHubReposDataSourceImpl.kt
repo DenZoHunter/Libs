@@ -1,15 +1,14 @@
 package ru.geekbrains.universe.data.datasourse.repos
 
-import io.reactivex.rxjava3.core.Single
-import ru.geekbrains.universe.data.GitHubRepos
 import ru.geekbrains.universe.data.api.GitHubApi
+import io.reactivex.rxjava3.core.Single
+import javax.inject.Inject
 
-class GitHubReposDataSourceImpl(
-    private val gitHubApi: GitHubApi,
-    private val url: String
+class GitHubReposDataSourceImpl @Inject constructor(
+    private val gitHubApi: GitHubApi
 ) : GitHubReposDataSource {
 
-    override fun fetchRepositories(): Single<List<GitHubRepos>> =
+    override fun fetchRepositories(url: String, userLogin: String): Single<List<GitHubRepos>> =
         gitHubApi.fetchRepositories(url)
 
 }

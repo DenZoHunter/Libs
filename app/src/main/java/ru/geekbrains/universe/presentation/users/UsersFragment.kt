@@ -9,9 +9,7 @@ import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 import ru.geekbrains.universe.App.Navigator.router
 import ru.geekbrains.universe.R
-import ru.geekbrains.universe.data.GitHubUser
 import ru.geekbrains.universe.presentation.users.adapter.UsersAdapter
-import ru.geekbrains.universe.repository.user.GitHubUserRepositoryFactory
 
 class UsersFragment : MvpAppCompatFragment(R.layout.fragment_users), UsersView,
     UsersAdapter.UserClickListener {

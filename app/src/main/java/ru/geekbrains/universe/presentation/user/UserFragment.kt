@@ -1,20 +1,24 @@
 package ru.geekbrains.universe.presentation.user
 
+
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import ru.geekbrains.universe.App
 import ru.geekbrains.universe.R
 import ru.geekbrains.universe.R.layout.fragment_user
 import ru.geekbrains.universe.data.GitHubUser
-import ru.geekbrains.universe.repository.user.GitHubUserRepositoryFactory
-import moxy.MvpAppCompatFragment
+import ru.geekbrains.universe.repository.user.GitHubUserRepository
+import ru.geekbrains.universe.presentation.abs.AbsFragment
 import moxy.ktx.moxyPresenter
+import javax.inject.Inject
 
-class UserFragment : MvpAppCompatFragment(fragment_user), UserView {
+class UserFragment : AbsFragment(fragment_user), UserView {
+
+    @Inject
+    lateinit var gitHubUserRepository: GitHubUserRepository
 
     companion object {
 
@@ -40,8 +44,8 @@ class UserFragment : MvpAppCompatFragment(fragment_user), UserView {
     private val presenter: UserPresenter by moxyPresenter {
         UserPresenter(
             userLogin = argUserLogin,
-            userRepository = GitHubUserRepositoryFactory.create(requireContext()),
-            router = App.router
+            userRepository = gitHubUserRepository,
+            router = router
         )
     }
 

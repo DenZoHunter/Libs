@@ -5,7 +5,6 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import moxy.MvpPresenter
-import ru.geekbrains.universe.data.GitHubUser
 import ru.geekbrains.universe.presentation.user.UserScreen
 import ru.geekbrains.universe.repository.user.GitHubUserRepository
 

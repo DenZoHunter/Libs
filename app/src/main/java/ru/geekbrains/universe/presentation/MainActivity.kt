@@ -1,15 +1,12 @@
 package ru.geekbrains.universe.presentation
 
-import android.R
 import android.os.Bundle
 import com.github.terrakok.cicerone.androidx.AppNavigator
-import moxy.MvpAppCompatActivity
-import ru.geekbrains.universe.App.Navigator.navigatorHolder
-import ru.geekbrains.universe.App.Navigator.router
+import ru.geekbrains.universe.presentation.abs.AbsActivity
 import ru.geekbrains.universe.presentation.users.UsersScreen
 
 
-class MainActivity : MvpAppCompatActivity() {
+class MainActivity : AbsActivity() {
 
     private val navigator = AppNavigator(this, android.R.id.content)
 

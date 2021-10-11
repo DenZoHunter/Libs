@@ -1,14 +1,21 @@
-package ru.geekbrains.universe.data.api
+package ru.geekbrains.universe.di
 
+import ru.geekbrains.universe.data.api.GitHubApi
+import dagger.Module
+import dagger.Provides
+import dagger.Reusable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-object GitHubApiFactory {
+@Module
+class GitHubApiModule {
 
-    fun create(): GitHubApi =
+    @Reusable
+    @Provides
+    fun provideGitHubApi(): GitHubApi =
         Retrofit.Builder()
             .baseUrl("https://api.github.com")
             .client(

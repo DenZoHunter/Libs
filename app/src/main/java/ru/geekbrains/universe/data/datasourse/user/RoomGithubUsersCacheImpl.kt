@@ -1,11 +1,12 @@
 package ru.geekbrains.universe.data.datasourse.user
 
-import ru.geekbrains.universe.data.GitHubUser
 import ru.geekbrains.universe.data.database.RoomDataBase
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
+import ru.geekbrains.universe.data.GitHubUser
+import javax.inject.Inject
 
-class RoomGithubUsersCacheImpl(
+class RoomGithubUsersCacheImpl @Inject constructor(
     private val roomDataBase: RoomDataBase
 ) : RoomGithubUsersCache {
 
