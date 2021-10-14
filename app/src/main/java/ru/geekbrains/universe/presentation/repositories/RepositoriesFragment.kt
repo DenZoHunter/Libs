@@ -12,13 +12,12 @@ import ru.geekbrains.universe.presentation.repositories.adapter.RepositoriesAdap
 import moxy.ktx.moxyPresenter
 import ru.geekbrains.universe.data.GitHubRepos
 import ru.geekbrains.universe.presentation.abs.AbsFragment
-import ru.geekbrains.universe.repository.repos.GitHubReposRepository
 import javax.inject.Inject
 
 class RepositoriesFragment : AbsFragment(R.layout.fragment_repositories), RepositoriesView, RepositoriesAdapter.RepoClickListener {
 
     @Inject
-    lateinit var gitHubReposRepository: GitHubReposRepository
+    lateinit var repositoriesPresenterFactory: RepositoriesPresenterFactory
 
     private var repoList: RecyclerView? = null
     private val repositoriesAdapter: RepositoriesAdapter = RepositoriesAdapter(this)
@@ -30,9 +29,7 @@ class RepositoriesFragment : AbsFragment(R.layout.fragment_repositories), Reposi
     }
 
     private val presenter: RepositoriesPresenter by moxyPresenter {
-        RepositoriesPresenter(
-            gitHubReposRepository = gitHubReposRepository,
-            router = router,
+        repositoriesPresenterFactory.create(
             url = argUrl,
             userLogin = argUserLogin
         )

@@ -8,15 +8,19 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import moxy.ktx.moxyPresenter
 import ru.geekbrains.universe.presentation.abs.AbsFragment
+import javax.inject.Inject
 
 
 class RepositoryDetailsFragment : AbsFragment(R.layout.fragment_repository_details), RepositoryDetailsView {
+    @Inject
+    lateinit var repositoryDetailsPresenterFactory: RepositoryDetailsPresenterFactory
+
     private var argCountForks: Int? = null
 
     private val repoInfo: TextView by lazy { requireActivity().findViewById(R.id.info) }
 
     private val presenter: RepositoryDetailsPresenter by moxyPresenter {
-        RepositoryDetailsPresenter(countForks = argCountForks)
+        repositoryDetailsPresenterFactory.create(countForks = argCountForks)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,6 +1,5 @@
 package ru.geekbrains.universe.presentation.user
 
-
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment
 import ru.geekbrains.universe.R
 import ru.geekbrains.universe.R.layout.fragment_user
 import ru.geekbrains.universe.data.GitHubUser
-import ru.geekbrains.universe.repository.user.GitHubUserRepository
 import ru.geekbrains.universe.presentation.abs.AbsFragment
 import moxy.ktx.moxyPresenter
 import javax.inject.Inject
@@ -18,7 +16,7 @@ import javax.inject.Inject
 class UserFragment : AbsFragment(fragment_user), UserView {
 
     @Inject
-    lateinit var gitHubUserRepository: GitHubUserRepository
+    lateinit var userPresenterFactory: UserPresenterFactory
 
     companion object {
 
@@ -42,11 +40,7 @@ class UserFragment : AbsFragment(fragment_user), UserView {
 
     @Suppress("unused")
     private val presenter: UserPresenter by moxyPresenter {
-        UserPresenter(
-            userLogin = argUserLogin,
-            userRepository = gitHubUserRepository,
-            router = router
-        )
+        userPresenterFactory.create(userLogin = argUserLogin)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

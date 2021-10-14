@@ -5,22 +5,24 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
-import ru.geekbrains.universe.App.Navigator.router
 import ru.geekbrains.universe.R
+import ru.geekbrains.universe.data.GitHubUser
+import ru.geekbrains.universe.presentation.abs.AbsFragment
 import ru.geekbrains.universe.presentation.users.adapter.UsersAdapter
+import javax.inject.Inject
 
-class UsersFragment : MvpAppCompatFragment(R.layout.fragment_users), UsersView,
+
+class UsersFragment : AbsFragment(R.layout.fragment_users), UsersView,
     UsersAdapter.UserClickListener {
+    @Inject
+    lateinit var usersPresenterFactory: UsersPresenterFactory
+
     private var userList: RecyclerView? = null
     private val userAdapter: UsersAdapter = UsersAdapter(this)
 
     private val presenter: UsersPresenter by moxyPresenter {
-        UsersPresenter(
-            userRepository = GitHubUserRepositoryFactory.create(requireContext()),
-            router = router
-        )
+        usersPresenterFactory.create()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

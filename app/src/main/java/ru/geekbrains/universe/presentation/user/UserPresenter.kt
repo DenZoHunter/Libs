@@ -1,6 +1,8 @@
 package ru.geekbrains.universe.presentation.user
 
 import com.github.terrakok.cicerone.Router
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -8,8 +10,8 @@ import moxy.MvpPresenter
 import ru.geekbrains.universe.presentation.repositories.RepositoriesScreen
 import ru.geekbrains.universe.repository.user.GitHubUserRepository
 
-class UserPresenter(
-    private val userLogin: String,
+class UserPresenter @AssistedInject constructor(
+    @Assisted private val userLogin: String,
     private val userRepository: GitHubUserRepository,
     private val router: Router,
 ) : MvpPresenter<UserView>() {
