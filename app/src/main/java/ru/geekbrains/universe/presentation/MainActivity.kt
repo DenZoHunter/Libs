@@ -1,14 +1,14 @@
 package ru.geekbrains.universe.presentation
 
 import android.os.Bundle
-import com.github.terrakok.cicerone.androidx.AppNavigator
+import ru.geekbrains.universe.R
 import ru.geekbrains.universe.presentation.abs.AbsActivity
-import ru.geekbrains.universe.presentation.users.UsersScreen
-
+import ru.geekbrains.universe.presentation.movies.MoviesListScreen
+import com.github.terrakok.cicerone.androidx.AppNavigator
 
 class MainActivity : AbsActivity() {
 
-    private val navigator = AppNavigator(this, android.R.id.content)
+    private val navigator = AppNavigator(this, R.id.content)
 
     override fun onResumeFragments() {
         super.onResumeFragments()
@@ -18,7 +18,7 @@ class MainActivity : AbsActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        savedInstanceState ?: router.newRootScreen(UsersScreen())
+        savedInstanceState ?: router.newRootScreen(MoviesListScreen())
     }
 
     override fun onPause() {

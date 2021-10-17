@@ -1,8 +1,8 @@
 package ru.geekbrains.universe.di
 
-import ru.geekbrains.universe.presentation.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import ru.geekbrains.universe.presentation.MainActivity
 
 @Module
 interface CommonModule {
