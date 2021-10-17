@@ -21,5 +21,4 @@ class App : DaggerApplication() {
                 withNavigatorHolder(cicerone.getNavigatorHolder())
             }
             .build()
-
 }

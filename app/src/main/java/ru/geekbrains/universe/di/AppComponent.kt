@@ -25,10 +25,10 @@ interface AppComponent : AndroidInjector<App> {
         fun withRouter(router: Router): Builder
 
         @BindsInstance
-        fun withSchedulers(schedulers: Schedulers): Builder
+        fun withNavigatorHolder(navigatorHolder: NavigatorHolder): Builder
 
         @BindsInstance
-        fun withNavigatorHolder(navigatorHolder: NavigatorHolder): Builder
+        fun withSchedulers(schedulers: Schedulers): Builder
 
         fun build(): AppComponent
 

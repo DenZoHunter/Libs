@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">App GeekBrains</string>
-
+    <string name="error">Error</string>
 </resources>

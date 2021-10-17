@@ -1,14 +1,13 @@
 package ru.geekbrains.universe.presentation
 
 import android.os.Bundle
-import ru.geekbrains.universe.R
+import com.github.terrakok.cicerone.androidx.AppNavigator
 import ru.geekbrains.universe.presentation.abs.AbsActivity
 import ru.geekbrains.universe.presentation.movies.MoviesListScreen
-import com.github.terrakok.cicerone.androidx.AppNavigator
 
 class MainActivity : AbsActivity() {
 
-    private val navigator = AppNavigator(this, R.id.content)
+    private val navigator = AppNavigator(this, android.R.id.content)
 
     override fun onResumeFragments() {
         super.onResumeFragments()

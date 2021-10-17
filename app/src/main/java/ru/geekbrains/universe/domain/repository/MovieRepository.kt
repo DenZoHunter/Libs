@@ -1,7 +1,7 @@
 package ru.geekbrains.universe.domain.repository
 
-import ru.geekbrains.universe.domain.entity.Movie
 import io.reactivex.rxjava3.core.Observable
+import ru.geekbrains.universe.domain.entity.Movie
 
 interface MovieRepository {
 

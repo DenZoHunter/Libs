@@ -5,10 +5,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import androidx.room.Update
-import ru.geekbrains.universe.domain.entity.Movie
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-
+import ru.geekbrains.universe.domain.entity.Movie
 
 @Dao
 interface MovieDao {
